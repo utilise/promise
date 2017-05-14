@@ -43,44 +43,4 @@ describe('promise', function() {
     setTimeout(done, 20)
   })
 
-  it('should resolve promise.null', function(done) {
-    var fn = function(d){ result = d }
-      , p = promise.null()
-      , result
-
-    p.then(fn)
-
-    setTimeout(function(){ expect(result).to.equal(null) }, 10)
-    setTimeout(done, 20)
-  })
-
-  it('should resolve promise.sync immediately', function() {
-    var fn = function(d){ result = d }
-      , p = promise.sync(1)('a','b','c')
-      , result
-
-    p.then(fn)
-    expect(result).to.equal('b')
-  })
-
-  it('should resolve promise.noop', function(done) {
-    var fn = new Error('foo')
-      , p = promise.noop('baz')
-      , result
-
-    p.then(fn)
-    setTimeout(function(){ expect(result).to.equal(undefined) }, 10)
-    setTimeout(done, 20)
-  })
-
-  it('should variadically resolve promise.args', function(done) {
-    var fn = function(d){ result = d }
-      , p = promise.args(1)('a','b','c')
-      , result
-
-    p.then(fn)
-    setTimeout(function(){ expect(result).to.equal('b') }, 10)
-    setTimeout(done, 20)
-  })
-
 })
